@@ -9,84 +9,65 @@ namespace Domain.Models.Database;
 
 public class Item : DbEntity
 {
-    // Обязательные элементы
-    
-    /// <summary>
-    /// Название элемента
-    /// </summary>
     [Column("title")]
     [JsonPropertyName("title")]
     [XmlElement(ElementName = "title")]
     public string Title { get; set; } = string.Empty;
     
-    /// <summary>
-    /// URL-адрес элемента
-    /// </summary>
     [Column("link")]
     [JsonPropertyName("link")]
     [XmlElement(ElementName = "link")]
     public string Link { get; set; } = string.Empty;
-
-    /// <summary>
-    /// Краткое описание элемента
-    /// </summary>
+    
     [Column("description")]
     [JsonPropertyName("description")]
     [XmlElement(ElementName = "description")]
     public string Description { get; set; } = string.Empty;
     
-    // Опциональные элементы
-
-    /// <summary>
-    /// Адрес электронной почты автора статьи
-    /// </summary>
     [Column("author")]
     [JsonPropertyName("author")]
     [XmlElement(ElementName = "author")]
     public string? Author { get; set; }
-
-    /// <summary>
-    /// Категории
-    /// </summary>
+    
     [JsonPropertyName("categories")]
     [XmlElement(ElementName = "category")]
     public List<Category>? Categories { get; set; }
-
-    /// <summary>
-    /// URL-адрес страницы для комментариев, относящихся к товару
-    /// </summary>
+    
     [Column("comments")]
     [JsonPropertyName("comments")]
     [XmlElement(ElementName = "comments")]
     public string? Comments { get; set; }
 
-    /// <summary>
-    /// Описывает мультимедийный объект, прикрепленный к элементу
-    /// </summary>
+    [Column("idEnclosure")]
+    [JsonPropertyName("idEnclosure")]
+    [XmlIgnore]
+    public Guid IdEnclosure { get; set; }
+    
     [Column("enclosure")]
     [JsonPropertyName("enclosure")]
     [XmlElement(ElementName = "enclosure")]
     public Enclosure? Enclosure { get; set; }
 
-    /// <summary>
-    /// Строка, которая однозначно идентифицирует элемент
-    /// </summary>
+    [Column("idGuid")]
+    [JsonPropertyName("idGuid")]
+    [XmlIgnore]
+    public Guid IdGuid { get; set; }
+    
     [Column("guid")]
     [JsonPropertyName("guid")]
     [XmlElement(ElementName = "guid")]
     public Domain.Models.Database.Guid? Guid { get; set; }
-    
-    /// <summary>
-    /// Дата публикации контента на канале
-    /// </summary>
+
     [Column("pubDate")]
     [JsonPropertyName("pubDate")]
     [XmlElement(ElementName = "pubDate")]
     public string? PubDate { get; set; }
 
-    /// <summary>
-    /// RSS-канал, с которого был получен элемент
-    /// </summary>
+    [Column("idSource")]
+    [JsonPropertyName("idSource")]
+    [XmlIgnore]
+    public Guid IdSource { get; set; }
+    
     [Column("source")]
     [JsonPropertyName("source")]
     [XmlElement(ElementName = "source")]

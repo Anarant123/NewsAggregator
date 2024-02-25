@@ -16,7 +16,8 @@ namespace Domain.Models
         {
             modelBuilder.Entity<Channel>()
                 .HasMany(c => c.Items)
-                .WithOne(i => i.Channel);
+                .WithOne(i => i.Channel)
+                .HasForeignKey(i => i.IdChannel);
 
             modelBuilder.Entity<Channel>()
                 .HasMany(c => c.Categories)
@@ -24,19 +25,23 @@ namespace Domain.Models
 
             modelBuilder.Entity<Channel>()
                 .HasOne(c => c.Cloud)
-                .WithMany(c => c.Channels);
+                .WithMany(c => c.Channels)
+                .HasForeignKey(c => c.IdCloud);
 
             modelBuilder.Entity<Channel>()
                 .HasOne(c => c.Image)
-                .WithMany(c => c.Channels);
+                .WithMany(c => c.Channels)
+                .HasForeignKey(c => c.IdImage);
 
             modelBuilder.Entity<Channel>()
                 .HasOne(c => c.TextInput)
-                .WithMany(c => c.Channels);
+                .WithMany(c => c.Channels)
+                .HasForeignKey(c => c.IdTextInput);
 
             modelBuilder.Entity<Item>()
                 .HasOne(i => i.Channel)
-                .WithMany(c => c.Items);
+                .WithMany(c => c.Items)
+                .HasForeignKey(i => i.IdChannel);
 
             modelBuilder.Entity<Item>()
                 .HasMany(i => i.Categories)
@@ -44,22 +49,25 @@ namespace Domain.Models
 
             modelBuilder.Entity<Item>()
                 .HasOne(c => c.Enclosure)
-                .WithMany(c => c.Items);
+                .WithMany(c => c.Items)
+                .HasForeignKey(c => c.IdEnclosure);
 
             modelBuilder.Entity<Item>()
                 .HasOne(c => c.Guid)
-                .WithMany(c => c.Items);
+                .WithMany(c => c.Items)
+                .HasForeignKey(c => c.IdGuid);
 
             modelBuilder.Entity<Item>()
                 .HasOne(c => c.Source)
-                .WithMany(c => c.Items);
+                .WithMany(c => c.Items)
+                .HasForeignKey(c => c.IdSource);
         }
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Channel> Channels { get; set; }
         public DbSet<Cloud> Clouds { get; set; }
         public DbSet<Enclosure> Enclosures { get; set; }
-        public DbSet<Domain.Models.Database.Guid> Guids { get; set; } // Переименован класс
+        public DbSet<Domain.Models.Database.Guid> Guids { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Source> Sources { get; set; }

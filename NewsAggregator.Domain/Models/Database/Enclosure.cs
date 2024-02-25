@@ -21,17 +21,11 @@ namespace Domain.Models.Database
         [XmlElement(ElementName = "length")]
         public int Length { get; set; }
         
-        /// <summary>
-        /// Внешний ключ на item
-        /// </summary>
         [Column("idItem")]
         [JsonPropertyName("idItem")]
         [XmlIgnore]
         public Guid IdItem { get; set; }
-        
-        /// <summary>
-        /// Элементы
-        /// </summary>
+
         [JsonIgnore]
         [XmlIgnore]
         public List<Item>? Items { get; set; }

@@ -16,9 +16,6 @@ namespace Domain.Models.Database
         [XmlElement(ElementName = "isPermaLink")]
         public bool IsPermaLink { get; set; } = true;
         
-        /// <summary>
-        /// Элементы
-        /// </summary>
         [JsonIgnore]
         [XmlIgnore]
         public List<Item>? Items { get; set; }

@@ -26,10 +26,7 @@ public class TextInput : DbEntity
     [JsonPropertyName("link")]
     [XmlElement(ElementName = "link")]
     public string Link { get; set; } = string.Empty;
-    
-    /// <summary>
-    /// Внешний ключ на канал
-    /// </summary>
+
     [Column("idChannel")]
     [JsonPropertyName("idChannel")]
     [XmlIgnore]

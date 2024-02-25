@@ -17,17 +17,11 @@ public class Source : DbEntity
     [XmlElement(ElementName = "url")]
     public string Url { get; set; } = string.Empty;
     
-    /// <summary>
-    /// Внешний ключ на item
-    /// </summary>
     [Column("idItem")]
     [JsonPropertyName("idItem")]
     [XmlIgnore]
     public Guid IdItem { get; set; }
-    
-    /// <summary>
-    /// Элементы
-    /// </summary>
+
     [JsonIgnore]
     [XmlIgnore]
     public List<Item>? Items { get; set; }
